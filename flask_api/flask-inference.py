@@ -6,6 +6,7 @@ from keras.models import load_model
 # flask configuration
 from flask import request, Flask, jsonify
 from matplotlib import pyplot as plt
+
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'bmp'])
 
@@ -17,9 +18,11 @@ session = tf.compat.v1.Session(config=config)
 
 # load model
 model = load_model("../result-balanced-4w_10_100_180_16_1e-3_1e-4_1/model_fine_final.h5")
+
 # load class names
 with open("../classes.txt", 'r') as f:
     classes = list(map(lambda x: x.strip(), f.readlines()))
+
 
 @app.route('/inference/', methods=['GET', 'POST'])
 def upload_file():
@@ -32,13 +35,8 @@ def upload_file():
         # 检查文件后缀名是否是图片文件
         if not allow_file(f.filename):
             return jsonify({"Code": "402", "Info": "file not supported, support jpg, jpeg, png"})
-        # read img as numpy array, remember to
+        # read img file as numpy array, remember to
         np_img = plt.imread(f) * 255
-        # 对图片进行处理
-        # Your code
-
-        # load an input image
-        # img = image.load_img(args.image, target_size=(299, 299))
         x = image.img_to_array(np_img)
         x = np.expand_dims(x, axis=0)
         x = preprocess_input(x)
