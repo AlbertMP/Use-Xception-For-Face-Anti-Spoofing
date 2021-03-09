@@ -18,6 +18,7 @@ I have tested the scripts in the following environment.
 * Keras 2.4.3
 * tf-nightly 2.5.0.dev20210131 (for RTX 30 Series)
 * tensorflow-gpu 1.15.0 (for other Nvidia GPU)
+* Flask 1.1.2
 
 ## Training Dataset
 
@@ -81,7 +82,7 @@ python fine_tune.py <dataset_root> <classes> <result_root> [epochs_pre] [epochs_
 python fine_tune.py D:\Dataset-AntiDF classes.txt result-balanced-4w_5_50_180_16_1e-3_1e-4_2/ --epochs_pre 5 --epochs_fine 50 --batch_size_pre 180 --batch_size_fine 16 --lr_pre 1e-3 --lr_fine 1e-4
 ```
 
-In `fine_tune.py`...  
+### `fine_tune.py`
 
 * Xception's weights are initialized with the ones pre-trained on the ImageNet dataset (officialy provided by the keras team).
 * In the first training stage, only the top classifier of the model is trained for 5 epochs.
@@ -114,3 +115,4 @@ Class name: Fake
 Probability: 0.00%
 ```
 
+##  inference service
