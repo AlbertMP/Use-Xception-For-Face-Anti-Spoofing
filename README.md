@@ -1,7 +1,7 @@
 # Use Xception For Face Anti-spoofing
 
 * This repository contains some scripts to train [Xception](https://arxiv.org/pdf/1610.02357.pdf) introduced by François Chollet, the founder of Keras.
-* Also support other classification project (via Xception)
+* Also support other classification projects (via Xception)
 
 ## Environments
 
