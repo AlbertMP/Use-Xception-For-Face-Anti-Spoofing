@@ -8,7 +8,7 @@ from flask import request, Flask, jsonify
 from matplotlib import pyplot as plt
 
 app = Flask(__name__)
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'bmp'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 # optimize the utilization of 3090 GPU accelerator
 import tensorflow as tf
