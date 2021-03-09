@@ -8,7 +8,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument('model')
 parser.add_argument('classes')
 parser.add_argument('image')
-parser.add_argument('--top_n', type=int, default=10)
 
 # optimize the utilization of 3090 GPU accelerator
 import tensorflow as tf
@@ -25,6 +24,7 @@ def main(args):
     classes = []
     with open(args.classes, 'r') as f:
         classes = list(map(lambda x: x.strip(), f.readlines()))
+    print(classes)
 
     # load an input image
     img = image.load_img(args.image, target_size=(299, 299))
@@ -36,7 +36,7 @@ def main(args):
     pred = model.predict(x)[0]
     result = [(classes[i], float(pred[i]) * 100.0) for i in range(len(pred))]
     result.sort(reverse=True, key=lambda x: x[1])
-    for i in range(args.top_n):
+    for i in range(2):
         (class_name, prob) = result[i]
         print("Top %d ====================" % (i + 1))
         print("Class name: %s" % (class_name))
