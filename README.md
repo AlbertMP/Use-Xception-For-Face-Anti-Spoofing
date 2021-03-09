@@ -18,7 +18,9 @@ I have tested the scripts in the following environment.
 * tf-nightly 2.5.0.dev20210131 (for RTX 30 Series)
 * tensorflow-gpu 1.15.0 (for other Nvidia GPU)
 
-## Dataset Structure
+## Dataset
+
+### Dataset Structure
 
 Make sure your dataset structure is like following structure.
 ```bash
@@ -26,6 +28,19 @@ Dataset-AntiDF
 ├─Fake
 └─Real
 ```
+
+### Several useful dataset
+
+```
+@inproceedings{liu2015faceattributes,
+ title = {Deep Learning Face Attributes in the Wild},
+ author = {Liu, Ziwei and Luo, Ping and Wang, Xiaogang and Tang, Xiaoou},
+ booktitle = {Proceedings of International Conference on Computer Vision (ICCV)},
+ month = {December},
+ year = {2015} 
+}
+```
+
 
 ## Label File: classes.txt
 
