@@ -17,10 +17,10 @@ config.gpu_options.allow_growth = True
 session = tf.compat.v1.Session(config=config)
 
 # load model
-model = load_model("../result-balanced-4w_10_100_180_16_1e-3_1e-4_1/model_fine_final.h5")
+model = load_model("../../result-balanced-4w_10_100_180_16_1e-3_1e-4_1/model_fine_final.h5")
 
 # load class names
-with open("../classes.txt", 'r') as f:
+with open("../../classes.txt", 'r') as f:
     classes = list(map(lambda x: x.strip(), f.readlines()))
 
 @app.route('/home/')
