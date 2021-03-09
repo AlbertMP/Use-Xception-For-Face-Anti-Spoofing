@@ -29,18 +29,27 @@ Dataset-AntiDF
 └─Real
 ```
 
-### Several useful dataset
+### Several useful datasets or spoof methods
 
 ```
-@inproceedings{liu2015faceattributes,
- title = {Deep Learning Face Attributes in the Wild},
- author = {Liu, Ziwei and Luo, Ping and Wang, Xiaogang and Tang, Xiaoou},
- booktitle = {Proceedings of International Conference on Computer Vision (ICCV)},
- month = {December},
- year = {2015} 
-}
-```
+DFFD: Diverse Fake Face Dataset (Contains most of the pictures of the following data sets)
+Hao Dang, A. (2020). On the Detection of Digital Face Manipulation. In In Proceeding of IEEE Computer Vision and Pattern Recognition (CVPR 2020).
 
+Large-scale CelebFaces Attributes (CelebA) Dataset 
+Liu, Z., Luo, P., Wang, X., & Tang, X. (2015). Deep Learning Face Attributes in the Wild. In Proceedings of International Conference on Computer Vision (ICCV).
+
+FaceForensics++
+Andreas Rössler, Davide Cozzolino, Luisa Verdoliva, Christian Riess, Justus Thies, & Matthias Nie\ssner (2019). FaceForensics++: Learning to Detect Manipulated Facial Images. In ICCV 2019.
+
+PGGN
+Tero Karras, Timo Aila, Samuli Laine, & Jaakko Lehtinen (2017). Progressive Growing of GANs for Improved Quality, Stability, and Variation. CoRR.
+
+StarGAN
+Yunjey Choi, Minje Choi, Munyoung Kim, Jung-Woo Ha, Sunghun Kim, & Jaegul Choo (2018). StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.
+
+StyleGAN
+Tero Karras, Samuli Laine, & Timo Aila (2018). A Style-Based Generator Architecture for Generative Adversarial Networks. CoRR.
+```
 
 ## Label File: classes.txt
 
