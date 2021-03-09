@@ -26,7 +26,7 @@ with open("../classes.txt", 'r') as f:
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 
 @app.route('/inference/', methods=['GET', 'POST'])
