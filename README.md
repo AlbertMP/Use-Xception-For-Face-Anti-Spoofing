@@ -7,7 +7,7 @@
 
 I have tested the scripts in the following environment.
 
-* Microsoft Windows 10 专业版 Insider Preview
+* Microsoft Windows 10 Pro Insider Preview
 * RTX3090 (24GB)
 * Nvidia Driver Version: 465.42
 * CUDA Version: 11.3  
