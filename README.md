@@ -1,7 +1,5 @@
 # Use Xception For Face Anti-spoofing
 
-## Description
-
 This repository contains some scripts to train [Xception](https://arxiv.org/pdf/1610.02357.pdf) introduced by François Chollet, the founder of Keras.
 
 ## Environments
@@ -9,6 +7,8 @@ This repository contains some scripts to train [Xception](https://arxiv.org/pdf/
 I have tested the scripts in the following environment.
 
 * Microsoft Windows 10 专业版 Insider Preview
+* Driver Version: 465.42
+* CUDA Version: 11.3  
 * RTX3090 (24GB)
 * python 3.6.12
 * numpy 1.19.5
@@ -18,7 +18,7 @@ I have tested the scripts in the following environment.
 * tf-nightly 2.5.0.dev20210131 (for RTX 30 Series)
 * tensorflow-gpu 1.15.0 (for other Nvidia GPU)
 
-#### Dataset Structure
+## Dataset Structure
 
 Make sure your dataset structure is like following structure.
 ```bash
@@ -27,7 +27,7 @@ Dataset-AntiDF
 └─Real
 ```
 
-#### Label File: classes.txt
+## Label File: classes.txt
 
 You must create a text file where all the class names are listed line by line.  
 This can be easily done with the below command.
@@ -37,7 +37,7 @@ ls Dataset-AntiDF > classes.txt
 ```
 You have to create a text file where all the class names are listed line by line. This can be done with the following command.
 
-#### Train the model
+## Train on the model
 
 NOTE: [] indicates an optional argument. <> indicates a required argument.
 
@@ -64,7 +64,7 @@ In `fine_tune.py`...
 * All the result data (serialized model files and figures) are to be saved under `result/`
 
 
-#### Inference
+## Inference via the model
 
 NOTE: [] indicates an optional argument. <> indicates a required argument.
 
@@ -77,9 +77,6 @@ NOTE: [] indicates an optional argument. <> indicates a required argument.
 python inference.py <model> <classes> <image> [top_n]
 python inference.py result-balanced-4w_5_50_180_16_1e-3_1e-4_1/model_fine_final.h5 classes.txt images/Image.jpeg --top_n 2
 ```
-
-**[Output Result]**:  
-
 ```bash
 ......
 2021-03-08 22:50:04.006047: I tensorflow/stream_executor/cuda/cuda_blas.cc:1838] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
