@@ -4,7 +4,7 @@ from keras.preprocessing import image
 from keras.models import load_model
 
 # flask configuration
-from flask import request, Flask, jsonify
+from flask import request, Flask, jsonify, render_template
 from matplotlib import pyplot as plt
 
 app = Flask(__name__)
@@ -23,6 +23,9 @@ model = load_model("../result-balanced-4w_10_100_180_16_1e-3_1e-4_1/model_fine_f
 with open("../classes.txt", 'r') as f:
     classes = list(map(lambda x: x.strip(), f.readlines()))
 
+@app.route('/home/')
+def home():
+    return render_template('index.html')
 
 @app.route('/inference/', methods=['GET', 'POST'])
 def upload_file():
