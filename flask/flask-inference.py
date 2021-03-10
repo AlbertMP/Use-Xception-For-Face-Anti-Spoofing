@@ -16,17 +16,20 @@ config = tf.compat.v1.ConfigProto(allow_soft_placement=False, log_device_placeme
 config.gpu_options.allow_growth = True
 session = tf.compat.v1.Session(config=config)
 
-# load model
-model = load_model("../result-balanced-4w_10_100_180_16_1e-3_1e-4_1/model_fine_final.h5")
-
-# load class names
-with open("../classes.txt", 'r') as f:
-    classes = list(map(lambda x: x.strip(), f.readlines()))
-
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
+
+
+@app.route('/xception')
+def xception():
+    return render_template('xception.html')
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 @app.route('/inference/', methods=['GET', 'POST'])
@@ -45,7 +48,10 @@ def upload_file():
         x = image.img_to_array(np_img)
         x = np.expand_dims(x, axis=0)
         x = preprocess_input(x)
-        # predict
+        # load model to predict & load class names
+        with open("../classes.txt", 'r') as f:
+            classes = list(map(lambda x: x.strip(), f.readlines()))
+        model = load_model("../result-balanced-4w_10_100_180_16_1e-3_1e-4_1/model_fine_final.h5")
         pred = model.predict(x)[0]
         result = [(classes[i], float(pred[i]) * 100.0) for i in range(len(pred))]
         result.sort(reverse=True, key=lambda x: x[1])
