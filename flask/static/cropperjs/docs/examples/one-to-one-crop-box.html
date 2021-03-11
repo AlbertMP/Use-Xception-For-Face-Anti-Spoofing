@@ -9,11 +9,12 @@
     <style>
         .container {
             margin: 20px auto;
-            max-width: 640px;
+            /*max-width: 640px;*/
         }
 
         img {
-            max-width: 100%;
+            /*max-height: 100%;*/
+            /*max-width: 100%;*/
         }
     </style>
 </head>
@@ -42,17 +43,18 @@
         var button = document.getElementById('button');
         var result = document.getElementById('result');
         var cropper = new Cropper(image, {
-            dragMode: 'move', // move the canvas
+            dragMode: 'crop', // move the canvas rather than crop box
             aspectRatio: 1 / 1, // square crop box
-            autoCropArea: 0.65, // size of crop box
-            restore: false,
-            guides: false,
-            center: true,
-            highlight: true,
-            cropBoxMovable: false,
-            cropBoxResizable: false,
+            cropBoxMovable: true, // cannot be moved
+            cropBoxResizable: false, // cannot be resized
+            autoCropArea: 0.65, // size of crop box compared with the image
+            // restore: false,
+            guides: true, // show dashed line
+            center: true, // show the center indicator
+            highlight: true, // highlight the crop box
             toggleDragModeOnDblclick: false,
-            rotatable: true,
+            // rotatable: true,
+            // zoomOnWheel: true,
             ready: function (event) {
                 // Zoom the image to its natural size
                 cropper.zoomTo(1);
