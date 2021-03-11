@@ -31,6 +31,9 @@ def xception():
 def about():
     return render_template('about.html')
 
+@app.route('/crop')
+def crop():
+    return render_template('upload-cropped-image-to-server.html')
 
 @app.route('/inference/', methods=['GET', 'POST'])
 def upload_file():

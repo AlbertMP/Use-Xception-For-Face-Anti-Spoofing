@@ -9,35 +9,47 @@
     <style>
         .container {
             margin: 20px auto;
+            width: 800px;
             /*max-width: 640px;*/
         }
 
         img {
             /*max-height: 100%;*/
             /*max-width: 100%;*/
+            width: 800px;
+            height: auto;
         }
     </style>
 </head>
 <body>
 <div class="container">
-<!--    <h1>One to one crop box</h1>-->
-<!--    <p>The image displays in its natural size, so the size of the crop box equals the real cropped size.</p>-->
-<!--    <h3>Image</h3>-->
+    <!--    <h1>One to one crop box</h1>-->
+    <!--    <p>The image displays in its natural size, so the size of the crop box equals the real cropped size.</p>-->
+    <!--    <h3>Image</h3>-->
     <div>
+        <!--        <label class="label" data-toggle="tooltip" title="Change your avatar">-->
+        <!--&lt;!&ndash;            <img class="rounded" id="avatar" src="https://avatars0.githubusercontent.com/u/3456749?s=160" alt="avatar">&ndash;&gt;-->
+
+        <!--        </label>-->
+        <input type="file" class="sr-only" id="input" name="image" accept="image/*">
         <img id="image" src="../images/picture.jpg" alt="Picture">
     </div>
-<!--    <p>Data: <span id="data"></span></p>-->
-<!--    <p>Crop Box Data: <span id="cropBoxData"></span></p>-->
+    <!--    <p>Data: <span id="data"></span></p>-->
+    <!--    <p>Crop Box Data: <span id="cropBoxData"></span></p>-->
     <h3>Result</h3>
     <p>
         <button type="button" id="button">Crop</button>
     </p>
     <div id="result"></div>
 </div>
+<script src="https://unpkg.com/jquery@3/dist/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="../js/cropper.js"></script>
 <script>
     window.addEventListener('DOMContentLoaded', function () {
-        var image = document.querySelector('#image');
+        // var image = document.querySelector('#image');
+        var image = document.getElementById('image');
+        var input = document.getElementById('input');
         var data = document.querySelector('#data');
         var cropBoxData = document.querySelector('#cropBoxData');
         var button = document.getElementById('button');
@@ -71,6 +83,35 @@
                     event.preventDefault();
                 }
             },
+        });
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        input.addEventListener('change', function (e) {
+            var files = e.target.files;
+            var done = function (url) {
+                input.value = '';
+                image.src = url;
+                // $alert.hide();
+                // $modal.modal('show');
+            };
+            var reader;
+            var file;
+            var url;
+
+            if (files && files.length > 0) {
+                file = files[0];
+
+                if (URL) {
+                    done(URL.createObjectURL(file));
+                } else if (FileReader) {
+                    reader = new FileReader();
+                    reader.onload = function (e) {
+                        done(reader.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
         });
 
         button.onclick = function () {
