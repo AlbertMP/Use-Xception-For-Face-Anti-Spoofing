@@ -1,5 +1,6 @@
 import math
 import os
+import datetime
 import argparse
 import matplotlib
 import imghdr
@@ -130,6 +131,7 @@ def main(args):
     predictions = Dense(num_classes, activation='softmax')(x)
     model = Model(inputs=base_model.inputs, outputs=predictions)
 
+    # draw the structure of xception
     # from tensorflow import keras
     # model.summary()
     # keras.utils.plot_model(
@@ -151,6 +153,10 @@ def main(args):
         optimizer=Adam(lr=args.lr_pre),
         metrics=['accuracy']
     )
+
+    # add tensorboard
+    log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
 
     # train
     hist_pre = model.fit_generator(
@@ -177,6 +183,8 @@ def main(args):
                     'model_pre_ep{epoch}_valloss{val_loss:.3f}.h5'),
                 period=args.snapshot_period_pre,
             ),
+            # tensorboard enabled
+            tensorboard_callback
         ],
     )
     model.save(os.path.join(args.result_root, 'model_pre_final.h5'))
