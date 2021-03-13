@@ -227,6 +227,8 @@ def main(args):
                     'model_fine_ep{epoch}_valloss{val_loss:.3f}.h5'),
                 period=args.snapshot_period_fine,
             ),
+            # tensorboard enabled
+            tensorboard_callback
         ],
     )
     model.save(os.path.join(args.result_root, 'model_fine_final.h5'))
