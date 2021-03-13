@@ -154,9 +154,9 @@ def main(args):
         metrics=['accuracy']
     )
 
-    # add tensorboard
-    log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
+    # add tensorboard for pre-train
+    log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d") + "/pre-train"
+    tensorboard_callback_pre = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
 
     # train
     hist_pre = model.fit_generator(
@@ -184,7 +184,7 @@ def main(args):
                 period=args.snapshot_period_pre,
             ),
             # tensorboard enabled
-            tensorboard_callback
+            tensorboard_callback_pre
         ],
     )
     model.save(os.path.join(args.result_root, 'model_pre_final.h5'))
@@ -201,6 +201,10 @@ def main(args):
         optimizer=Adam(lr=args.lr_fine),
         loss=categorical_crossentropy,
         metrics=['accuracy'])
+
+    # add tensorboard for fine-train
+    log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d") + "/fine-train"
+    tensorboard_callback_fine = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
 
     # train
     hist_fine = model.fit_generator(
@@ -228,7 +232,7 @@ def main(args):
                 period=args.snapshot_period_fine,
             ),
             # tensorboard enabled
-            tensorboard_callback
+            tensorboard_callback_fine
         ],
     )
     model.save(os.path.join(args.result_root, 'model_fine_final.h5'))
