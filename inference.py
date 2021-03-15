@@ -29,6 +29,7 @@ def main(args):
     # load an input image
     img = image.load_img(args.image, target_size=(299, 299))
     x = image.img_to_array(img)
+    # print(x)
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
 
