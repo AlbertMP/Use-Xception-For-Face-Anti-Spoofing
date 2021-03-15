@@ -127,8 +127,8 @@
 
             if (cropper) {
                 canvas = cropper.getCroppedCanvas({
-                    width: 200,
-                    height: 200,
+                    width: 299,
+                    height: 299,
                 });
                 initialAvatarURL = avatar.src;
                 avatar.src = canvas.toDataURL();
@@ -137,7 +137,8 @@
                 canvas.toBlob(function (blob) {
                     var formData = new FormData();
 
-                    formData.append('avatar', blob, 'avatar.jpg');
+                    formData.append('file', blob, 'avatar.png');
+                    console.log(blob)
                     // $.ajax('https://jsonplaceholder.typicode.com/posts', {
                     $.ajax('http://127.0.0.1:5000/inference/', {
                         method: 'POST',
@@ -164,7 +165,7 @@
 
                         success: function (data) {
                             $alert.show().addClass('alert-success').text('Upload success');
-                            alter(data)
+                            console.log(data)
                         },
 
                         error: function () {
