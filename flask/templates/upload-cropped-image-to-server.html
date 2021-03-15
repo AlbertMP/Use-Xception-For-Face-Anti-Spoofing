@@ -2,70 +2,147 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Anti Spoofing</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Cropper.js</title>
+
     <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/cropperjs/docs/css/cropper.css">
+    <link href="../static/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+
+        /* crop */
         .label {
             cursor: pointer;
+
         }
 
         .progress {
-            display: none;
-            margin-bottom: 1rem;
+            margin-block: 300px;
         }
 
         .alert {
             display: none;
+            margin-block: 300px;
         }
 
         .img-container img {
             max-width: 100%;
         }
 
+        /* navbar */
+        @media (min-width: 768px) {
+
+        }
+
+        body {
+            padding-top: 5rem;
+        }
+
+        /*crop*/
+        img {
+            　　max-width: 100%
+        }
+
+        label {
+            display: block;
+            text-align: center;
+            /*width: 100px;*/
+            font-size: 10px;
+            color: #fff;
+            height: 30px;
+            line-height: 30px;
+        }
+
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>Upload cropped image to server</h1>
-    <label class="label" data-toggle="tooltip" title="Change your avatar">
-        <img class="rounded" id="avatar" src="../static/bootstrap-4.6.0-dist/images/file-picture.svg" alt="avatar">
-        <input type="file" class="sr-only" id="input" name="image" accept="image/*">
-    </label>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Peng</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0"
-             aria-valuemin="0" aria-valuemax="100">0%
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  active" aria-current="page" href="xception">Xception</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
     </div>
+</nav>
 
-    <div class="alert" role="alert"></div>
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">Crop the image</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+<main class="container">
+
+    <div class="starter-template text-center py-5 px-3">
+        <h1>Welcome to anti-spoofing system</h1>
+        <h1>Upload cropped image to server</h1>
+        <!-- crop image -->
+        <div class="container">
+
+            <label class="label" data-toggle="tooltip" title="Change your image">
+                <img class="rounded" id="avatar" src="../static/bootstrap-4.6.0-dist/images/file-picture.svg"
+                     alt="avatar">
+                <input type="file" class="sr-only" id="input" name="image" accept="image/*">
+            </label>
+
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                     aria-valuenow="0"
+                     aria-valuemin="0" aria-valuemax="100">0%
                 </div>
-                <div class="modal-body">
-                    <div class="img-container">
-                        <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+            </div>
+
+            <div class="alert" role="alert"></div>
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel">Crop the image</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="img-container">
+                                <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="crop">Crop</button>
                 </div>
             </div>
         </div>
     </div>
 
+</main>
 
-</div>
+
+<script src="../static/bootstrap-5.0.0-beta2-dist/js/bootstrap.bundle.min.js"></script>
 <script src="../static/jquery-3.6.0-dist/js/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="../static/cropperjs/docs/js/cropper.js"></script>
