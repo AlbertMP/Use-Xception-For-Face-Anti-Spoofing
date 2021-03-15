@@ -37,7 +37,7 @@ def about():
 
 @app.route('/crop')
 def crop():
-    return render_template('upload-cropped-image-to-server.html')
+    return render_template('crop.html')
 
 @app.route('/inference/', methods=['GET', 'POST'])
 def upload_file():
