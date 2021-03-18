@@ -74,7 +74,10 @@ def upload_file():
             print("Top %d ====================" % (i + 1))
             print("Class name: %s" % (class_name))
             print("Probability: %.2f%%" % (prob))
+            # prob = '%.2f'% prob
+            # print(prob)
         result = dict(result)
+        print(result)
     return jsonify({"Code": "200", "Info": result})
 
 
