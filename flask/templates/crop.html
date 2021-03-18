@@ -26,6 +26,7 @@
         body {
             padding-top: 5rem;
         }
+
         /*navbar*/
         /*.bd-placeholder-img {*/
         /*    font-size: 1.125rem;*/
@@ -178,6 +179,29 @@
             </div>
         </div>
 
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Class</th>
+                <th scope="col">Prob</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td id="first">Mark</td>
+                <td id="firstProb">Otto</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td id="second">Jacob</td>
+                <td id="secondProb">Thornton</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <pre style="width:100%;height:100%" id="data-test"></pre>
         <p class="lead">Click Xception in nav bar to distinguish images.<br> Have a nice journey.</p>
 
     </div>
@@ -257,7 +281,7 @@
                     var formData = new FormData();
 
                     formData.append('file', blob, 'avatar.png');
-                    console.log(blob)
+                    // console.log(blob)
                     // $.ajax('https://jsonplaceholder.typicode.com/posts', {
                     $.ajax('http://127.0.0.1:5000/inference/', {
                         method: 'POST',
@@ -284,7 +308,24 @@
 
                         success: function (data) {
                             $alert.show().addClass('alert-success').text('Upload success');
-                            console.log(data)
+                            // console.log(data)
+                            // console.log(typeof (data))
+                            // console.log(data.Code)
+                            // console.log(data.Info)
+                            // console.log(data.Info.Fake)
+                            if (data.Info.Fake > data.Info.Real) {
+                                document.getElementById("first").innerHTML = "Fake"
+                                document.getElementById("second").innerHTML = "Real"
+                                document.getElementById("firstProb").innerHTML = data.Info.Fake
+                                document.getElementById("secondProb").innerHTML = data.Info.Real
+                            } else {
+                                document.getElementById("first").innerHTML = "Real"
+                                document.getElementById("second").innerHTML = "Fake"
+                                document.getElementById("firstProb").innerHTML = data.Info.Real
+                                document.getElementById("secondProb").innerHTML = data.Info.Fake
+                            }
+
+
                         },
 
                         error: function () {
