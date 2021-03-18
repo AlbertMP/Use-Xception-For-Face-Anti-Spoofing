@@ -179,7 +179,7 @@
             </div>
         </div>
 
-        <table class="table">
+        <table class="table" id="table" hidden="hidden">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -190,13 +190,13 @@
             <tbody>
             <tr>
                 <th scope="row">1</th>
-                <td id="first">Mark</td>
-                <td id="firstProb">Otto</td>
+                <td id="first">Real</td>
+                <td id="firstProb">Pending result ...</td>
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td id="second">Jacob</td>
-                <td id="secondProb">Thornton</td>
+                <td id="second">Fake</td>
+                <td id="secondProb">Pending result ...</td>
             </tr>
             </tbody>
         </table>
@@ -314,17 +314,18 @@
                             // console.log(data.Info)
                             // console.log(data.Info.Fake)
                             if (data.Info.Fake > data.Info.Real) {
-                                document.getElementById("first").innerHTML = "Fake"
-                                document.getElementById("second").innerHTML = "Real"
-                                document.getElementById("firstProb").innerHTML = data.Info.Fake
-                                document.getElementById("secondProb").innerHTML = data.Info.Real
+                                document.getElementById("first").innerHTML = "Fake";
+                                document.getElementById("second").innerHTML = "Real";
+                                document.getElementById("firstProb").innerHTML = data.Info.Fake;
+                                document.getElementById("secondProb").innerHTML = data.Info.Real;
                             } else {
-                                document.getElementById("first").innerHTML = "Real"
-                                document.getElementById("second").innerHTML = "Fake"
-                                document.getElementById("firstProb").innerHTML = data.Info.Real
-                                document.getElementById("secondProb").innerHTML = data.Info.Fake
+                                document.getElementById("first").innerHTML = "Real";
+                                document.getElementById("second").innerHTML = "Fake";
+                                document.getElementById("firstProb").innerHTML = data.Info.Real;
+                                document.getElementById("secondProb").innerHTML = data.Info.Fake;
                             }
 
+                            document.getElementById("table").removeAttribute("hidden");
 
                         },
 
