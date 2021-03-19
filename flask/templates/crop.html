@@ -9,6 +9,7 @@
     <link href="../static/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
 
+        /*navbar*/
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -27,58 +28,7 @@
             padding-top: 5rem;
         }
 
-        /*navbar*/
-        /*.bd-placeholder-img {*/
-        /*    font-size: 1.125rem;*/
-        /*    text-anchor: middle;*/
-        /*    -webkit-user-select: none;*/
-        /*    -moz-user-select: none;*/
-        /*    user-select: none;*/
-        /*}*/
-
-        /*@media (min-width: 768px) {*/
-        /*    .bd-placeholder-img-lg {*/
-        /*        font-size: 3.5rem;*/
-        /*    }*/
-        /*}*/
-
-        /*body {*/
-        /*    padding-top: 5rem;*/
-        /*}*/
-
-        /*!*crop*!*/
-        /*.label {*/
-        /*    cursor: pointer;*/
-        /*}*/
-
-        /*.progress {*/
-        /*    margin-block: 300px;*/
-        /*}*/
-
-        /*.alert {*/
-        /*    display: none;*/
-        /*    margin-block: 300px;*/
-        /*}*/
-
-        /*.img-container img {*/
-        /*    max-width: 100%;*/
-        /*}*/
-
-        /*img {*/
-        /*    　　max-width: 100%*/
-        /*}*/
-
-
-        /*label {*/
-        /*    display: block;*/
-        /*    text-align: center;*/
-        /*    !*width: 100px;*!*/
-        /*    font-size: 10px;*/
-        /*    color: #fff;*/
-        /*    height: 30px;*/
-        /*    line-height: 30px;*/
-        /*}*/
-
+        /* crop */
         .label {
             cursor: pointer;
         }
@@ -101,7 +51,7 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Peng</a>
+        <a class="navbar-brand" href="/">Peng</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault"
                 aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -153,6 +103,7 @@
                 </div>
                 <div class="alert" role="alert"></div>
 
+                <!-- crop modal -->
                 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -205,7 +156,9 @@
         <p class="lead">Click Xception in nav bar to distinguish images.<br> Have a nice journey.</p>
 
     </div>
-
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Click Xception in nav bar to distinguish images.<br> Have a nice journey.</p>
+    </div>
 </main>
 
 <script src="../static/bootstrap-5.0.0-beta2-dist/js/bootstrap.bundle.min.js"></script>
