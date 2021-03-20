@@ -53,7 +53,7 @@ StyleGAN
 Tero Karras, Samuli Laine, & Timo Aila (2018). A Style-Based Generator Architecture for Generative Adversarial Networks. CoRR.
 ```
 
-## Label File: classes.txt
+### Label File: classes.txt
 
 Create a text file where all the class names are listed line by line. This can be easily done with the below command.
 
@@ -61,7 +61,7 @@ Create a text file where all the class names are listed line by line. This can b
 ls Dataset-AntiDF > classes.txt
 ```
 
-## Train on the model
+### Train on the model
 
 * `<dataset_root>`: Path to the directory where all the training data stored. **required**
 * `<classes>`: Path to a txt file where all the class names are listed line by line. **required**
@@ -89,8 +89,15 @@ python fine_tune.py D:\Dataset-AntiDF classes.txt result-balanced-4w_5_50_180_16
 * In the second training stage, the whole model is trained for 50 epochs with a lower learning rate.
 * All the result data (serialized model files and figures) are to be saved under `result/`
 
+### View training log
 
-## Inference via the model
+enter command below in terminal
+```bash
+tensorboard --logdir=logs/fit/20210313
+```
+
+
+## Inference via model
 
 * `<model>`: Path to a serialized model file. **required**
 * `<classes>`: Path to a txt file where all the class names are listed line by line. **required**
@@ -109,10 +116,14 @@ python inference.py result-balanced-4w_5_50_180_16_1e-3_1e-4_1/model_fine_final.
 2021-03-08 22:50:04.006047: I tensorflow/stream_executor/cuda/cuda_blas.cc:1838] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
 Top 1 ====================
 Class name: Real
-Probability: 100.00%
+Probability: 100.00%S
 Top 2 ====================
 Class name: Fake
 Probability: 0.00%
 ```
 
-##  inference service
+##  Inference service
+
+based on Flask 1.1.2
+
+run flask-inference.py file, browser the website shown in terminal.
