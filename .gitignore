@@ -2,3 +2,4 @@ logs
 .idea
 result-*
 flask/static/cropperjs/docs
+images
