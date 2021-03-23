@@ -3,3 +3,4 @@ logs
 result-*
 flask/static/cropperjs/docs
 images
+flask/static/
