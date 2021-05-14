@@ -65,7 +65,7 @@ def upload_file():
         # load model to predict & load class names
         with open("../classes.txt", 'r') as f:
             classes = list(map(lambda x: x.strip(), f.readlines()))
-        model = load_model("../result-balanced-4w_10_100_180_16_1e-3_1e-4_1/model_fine_final.h5")
+        model = load_model("../result-balanced-4w_10_100_180_16_1e-3_1e-4_2/model_fine_final.h5")
         pred = model.predict(x)[0]
         result = [(classes[i], float(pred[i]) * 100.0) for i in range(len(pred))]
         result.sort(reverse=True, key=lambda x: x[1])
