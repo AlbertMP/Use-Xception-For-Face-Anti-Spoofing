@@ -32,7 +32,7 @@ Dataset-AntiDF
 ```
 
 ### Several related datasets or spoofing methods
-
+Combine these datasets to `Dataset-AntiDF`
 ```
 DFFD: Diverse Fake Face Dataset (Contains most of the pictures of the following data sets)
 Hao Dang, A. (2020). On the Detection of Digital Face Manipulation. In In Proceeding of IEEE Computer Vision and Pattern Recognition (CVPR 2020).
